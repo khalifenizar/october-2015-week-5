@@ -30,4 +30,26 @@ $(document).on("ready", function () {
 
   });
 
+
+  $(".js-create-character").on("click", function () {
+    var newCharacter = {
+      name: "Chewbacca",
+      occupation: "Smuggler",
+      weapon: "Bowcaster"
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "https://ironhack-characters.herokuapp.com/characters",
+      data: newCharacter,
+      success: function () {
+        alert("Character was created successfully!")
+      },
+      error: function () {
+        alert("Character could not be created");
+      },
+      dataType: "json"
+    });
+  });
+
 });
