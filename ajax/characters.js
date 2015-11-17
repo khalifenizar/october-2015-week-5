@@ -7,20 +7,7 @@ $(document).on("ready", function () {
     $.ajax({
       url: "https://ironhack-characters.herokuapp.com/characters",
 
-      success: function (characters_info) {
-        $(".js-characters-wrapper ul").empty();
-
-        characters_info.forEach(function (character) {
-          var liHtml = "\
-            <li>\
-              " + character.name + "\
-              <em>" + character.occupation + "</em>\
-              <span>" + character.weapon + "</span>\
-            </li>";
-
-          $(".js-characters-wrapper ul").append(liHtml);
-        });
-      },
+      success: showCharacters,
 
       error: function () {
         alert("ZOMG ERROR");
@@ -53,3 +40,19 @@ $(document).on("ready", function () {
   });
 
 });
+
+
+function showCharacters (characters_info) {
+  $(".js-characters-wrapper ul").empty();
+
+  characters_info.forEach(function (character) {
+    var liHtml = "\
+      <li>\
+        " + character.name + "\
+        <em>" + character.occupation + "</em>\
+        <span>" + character.weapon + "</span>\
+      </li>";
+
+    $(".js-characters-wrapper ul").append(liHtml);
+  });
+}
